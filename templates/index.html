@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🔥 FWI Prediction AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="card">
+    <h1>🔥 Forest Fire AI</h1>
+    <p class="subtitle">Predict Fire Weather Index (FWI)</p>
+
+    <form method="post">
+        <div class="grid">
+            <input type="number" step="any" name="Temprature" placeholder="🌡 Temperature" required>
+            <input type="number" step="any" name="RH" placeholder="💧 Humidity" required>
+            <input type="number" step="any" name="Ws" placeholder="🌬 Wind Speed" required>
+            <input type="number" step="any" name="Rain" placeholder="🌧 Rainfall" required>
+            <input type="number" step="any" name="FFMC" placeholder="🔥 FFMC" required>
+            <input type="number" step="any" name="DMC" placeholder="🌲 DMC" required>
+            <input type="number" step="any" name="ISI" placeholder="⚡ ISI" required>
+            <input type="number" step="any" name="Classes" placeholder="📊 Class" required>
+            <input type="number" step="any" name="Region" placeholder="📍 Region" required>
+        </div>
+
+        <button type="submit">Predict Fire Risk</button>
+    </form>
+
+    {% if result is not none %}
+        <div class="result {% if result > 50 %}high{% else %}low{% endif %}">
+            🔥 Predicted FWI: <span>{{ result }}</span>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
